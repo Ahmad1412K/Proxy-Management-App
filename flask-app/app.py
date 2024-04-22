@@ -99,13 +99,6 @@ def login():
     return jsonify({"msg": "Bad username or password"}), 401
 
 
-@app.route("/protected", methods=["GET"])
-@jwt_required()
-def protected():
-    current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200
-
-
 @app.route("/proxy", methods=["POST"])
 @jwt_required()
 def add_proxy():
